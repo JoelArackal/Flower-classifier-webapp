@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block bodyblock %}
+<style>
+    .imgflower
+    {
+        width: 500px;
+        max-width: 80%;
+        display: block;
+        margin: auto;
+    }
+    .container h1
+    {
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <a href="{{ img.url }}">
+    <img src="{{ img.url }}" class="imgflower" alt=""></a>
+    <h1>Prediction: {{result}}</h1>
+    </div>
+    {% endblock %}

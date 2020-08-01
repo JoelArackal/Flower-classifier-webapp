@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    
+</head>
+<body>
+    {% block bodyblock %}
+    <style>
+        form.custom input
+        {
+            display: inline;
+           
+        }
+        form.custom label
+        {
+            color:black;
+        }
+        .jumbotron
+        {
+            background-image: url("{% static 'sunflower2.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* .jumbotron .container
+        {
+            
+            opacity: 1;
+            border: 1px solid black;
+	position:relative;
+        } */
+.jumbotron  .ct
+{
+height:100%;
+width:100%;
+position:absolute;
+top:0;
+left:0;
+background-color:rgb(241, 236, 236);
+/* background-color: black; */
+opacity:0.65;
+z-index:0;
+}
+        .jumbotron  h1,h4,p
+        {
+	position:relative;
+            /* color: rgb(236, 228, 228); */
+            color: black;
+            font-weight: bold;
+		z-index:1000;
+        }
+    </style>
+    <div class="jumbotron">
+        <div class="container">
+<h1>Flower Predictor</h1>
+    <h4> <b>AI Driven</b></h4>
+    <p>  This website uses artificial intelligence to predict the name of the flower from its image. You can 
+        upload the flower images through the option below.</p>
+        </div>
+<div class='ct'></div>
+    
+
+    </div>
+    <br>
+    <div class="container">
+    <form class="custom" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for i in form %}
+        {{i.label}}: {{i}}
+        <br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Predict" class="btn btn-primary">
+    </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
